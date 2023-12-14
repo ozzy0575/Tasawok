@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasawok - تسوق</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<!-- Print Button -->
+<h2>Tasawok - شوبينج</h2>
+<form method="POST" action="/">
+    <div class="form-row">
+        <span class="form-label">Item - المطلوب</span>
+        <input class="form-input" type="text" name="name" placeholder="Item Name" required>
+    </div>
+    <div class="form-row">
+        <span class="form-label">Weight/Quantity - شقد بدك</span>
+        <input class="form-input" type="text" name="weight_quantity" placeholder="Weight/Quantity" required>
+    </div>
+    <div class="form-row">
+        <span class="form-label"> مين انت Who added:</span>
+        <input class="form-input" type="text" name="person" placeholder="Person Adding" required>
+    </div>
+    <div class="form-row">
+        <span class="form-label">Projected Price شقد بتخمن حقى:</span>
+        <input class="form-input" type="number" name="price" placeholder="Price" required>
+    </div>
+    <div class="form-row">
+        <span class="form-label">Location من وين</span>
+        <select class="form-input" name="location" required>
+            <option value="">Select Location</option>
+            <option value="Mercadona">Mercadona - مبركادونا</option>
+            <option value="Aldi">Aldi - الدي</option>
+            <option value="other">other - غيرو</option>
+            <!-- Add more locations as needed -->
+        </select>
+    </div>
+    <div class="form-row">
+        <input type="submit" value="Add">
+    </div>
+</form>
+<button class="no-print" onclick="window.print()">Print Shopping List</button>
+<div class="print-container">
+    <!-- This is the content you want to print -->
+<table>
+    <tr>
+        <th>Item Name</th>
+        <th>Weight/Quantity</th>
+        <th>Person</th>
+        <th>Price</th>
+        <th>Location</th>
+    </tr>
+    <tbody>
+    {% for item in shopping_list %}
+    <tr class="{{ 'processed' if item.processed else '' }}">
+        <td>{{ item.name }}</td>
+        <td>{{ item.weight_quantity }}</td>
+        <td>{{ item.person }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.location }}</td>
+        <td>
+            <!-- Delete button -->
+            <a href="{{ url_for('delete_item', item_id=item.id) }}">Delete</a>
+        </td>
+        <td>
+            <!-- Toggle Tick/Untick button -->
+            <a href="{{ url_for('process_item', item_id=item.id) }}">
+                {% if item.processed %}
+                Untick
+                {% else %}
+                Tick
+                {% endif %}
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- ... [rest of the HTML remains the same] ... -->
+</body>
+</html>

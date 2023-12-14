@@ -1,0 +1,104 @@
+body {
+    font-family: 'Times New Roman', serif;
+    background-color: #f4e7e7;
+    color: navy;
+    padding: 20px;
+}
+
+h2 {
+    color: navy;
+    font-style: italic;
+}
+
+.form-row {
+    margin-bottom: 10px;
+}
+
+.form-label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.form-input, select.form-input {
+    width: 200px;
+    padding: 8px;
+    margin-right: 10px;
+    border: 2px solid navy;
+    border-radius: 4px;
+    background-color: #f4e7e7;
+    color: navy;
+}
+
+.processed td {
+    text-decoration: line-through;
+    color: grey;
+}
+@media print {
+    /* Hide everything by default */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Then display the print container and its contents */
+    .print-container, .print-container * {
+        visibility: visible;
+    }
+
+    /* Position it at the start of the page */
+    .print-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+
+
+table a {
+    color: navy;
+    text-decoration: none;
+}
+
+
+select.form-input {
+    width: 215px;
+}
+
+input[type="submit"] {
+    padding: 8px 15px;
+    background-color: navy;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-style: italic;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff69b4;
+    color: navy;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid navy;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid navy;
+    background-color: #f4e7e7;
+    color: navy;
+}
+
+th {
+    background-color: navy;
+    color: white;
+}
+
+tr:hover {
+    background-color: #ff69b4;
+}
